@@ -1,5 +1,6 @@
 //Aggregation and Encapsulation
 //Address class
+
 class Address
 {
 	private String addressLine;
@@ -26,7 +27,7 @@ class Address
 	{
 		this.city = city;
 	}
-	public String getAddressetails()
+	public String getAddressDetails()
 	{
 		System.out.println(addressLine + city);
 		return addressLine;
@@ -38,11 +39,14 @@ class Customer
 {
 	private String customerName;
 	private Address residentialAddress;
-	public Customer(String customerName, Address residentialAddress) 
+	Address officialAddress;
+
+	public Customer(String customerName, Address residentialAddress, Address officialAddress) 
 	{
 		super();
 		this.customerName = customerName;
 		this.residentialAddress = residentialAddress;
+		this.officialAddress = officialAddress;
 	}
 	public String getCustomerName() 
 	{
@@ -60,10 +64,19 @@ class Customer
 	{
 		this.residentialAddress = residentialAddress;
 	}
+	public Address getOfficialAddress() 
+	{
+		return officialAddress;
+	}
+	public void setOfficialAddress(Address officialAddress) 
+	{
+		this.officialAddress = officialAddress;
+	}
 	public String getCustomerDetails()
 	{
 		System.out.println("Customer: " +customerName);
 		System.out.println("Residential Address: " +residentialAddress);
+		System.out.println("Official Address: " +officialAddress);
 		return customerName;
 	}
 }
@@ -74,9 +87,11 @@ public class TestCustomer
 	public static void main(String[] args) 
 	{
 		// TODO Auto-generated method stub
-		Address add = new Address("Ist Main HSR Layout,", "Bangalore");
-		Customer cus = new Customer("John", add);
-		add.getAddressetails();
+		Address add1 = new Address("Ist Main HSR Layout ", " Bangalore");
+		Address add2 = new Address("Ist Main Electronics city ", " Bangalore");
+		Customer cus = new Customer("John", add1, add2);
+		add1.getAddressDetails();
+		add2.getAddressDetails();
 		cus.getCustomerDetails();
 	}
 }
